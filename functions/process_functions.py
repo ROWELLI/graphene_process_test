@@ -23,12 +23,13 @@ def processing_logic(stage_name, next_stage_name, day_offset, stage_goal):
 
     stock = 0
     day = day_offset
+    total_fails = 0
     while True:
         produced = min(stage_goal, processes[stage_name]['throughput'])
         stage_goal -= produced
         failed = math.ceil(produced * processes[stage_name]['reject'])
         passed = produced - failed
-
+        total_fails += failed
         output = round(processes[next_stage_name]['throughput']//processes[next_stage_name]['ratio']) # 어차피 정수값이라 이렇게 설정
         # 여기 에러 있음 여기 조건문에 안걸리면(delay가 없을시 에러남)
         if day > processes[stage_name]['delay']:
@@ -55,7 +56,7 @@ def processing_logic(stage_name, next_stage_name, day_offset, stage_goal):
     
     start_day = df[df['Released'] > 0].index[0]
     print(df.head())
-    return start_day
+    return start_day, total_fails
 
 def ending_process(stage_name, day_offset, stage_goal):
     columns = ['Produced', 'Pass', 'Fail', 'Released', 'CarryOver', 'Stock']
