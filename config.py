@@ -1,0 +1,12 @@
+# config.py
+WINDOW_SIZE = "1600x900"
+
+# 각 공정의 시간(분), 처리량, 불량(%), 딜레이(일), 비율(1:x)
+COMPOSITING =   {'time': 8*60, 'throughput':2,   'reject': 0,   'delay':1, 'ratio':1}
+LAMI =          {'time': 3*60, 'throughput':540, 'reject':0,    'delay':1, 'ratio':270}
+LQ_INSPECTION = {'time': 30,   'throughput':540, 'reject':0.05, 'delay':1, 'ratio':1}
+ETCHING =       {'time': 2*60, 'throughput':208, 'reject':0,    'delay':1, 'ratio':1}
+EQ_INSPECTION = {'time': 2*60, 'throughput':208, 'reject':0.05, 'delay':1, 'ratio':1}
+TRANSCRIPTION = {'time': 8*60, 'throughput':30,  'reject':0,    'delay':1, 'ratio':1/6}
+
+OUTPUT_LOCATON = './ouput'
