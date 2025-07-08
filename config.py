@@ -19,5 +19,5 @@ processes = {
 }
 
 # 아직 연동 안함
-OUTPUT_LOCATON = './ouput'
+OUTPUT_LOCATON = './output'
 
